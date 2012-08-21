@@ -5,3 +5,5 @@
 *.swp
 *.swo
 local_settings.py
+collected_static
+uploaded_media
