@@ -1,0 +1,11 @@
+{% extends "payment/base.html" %}
+
+{% load i18n %}
+{% load url from future %}
+
+{% block body %}
+    <div><a href='{% url 'payment_paypal_standard' %}'>Paypal Standard</a></div>
+    <div><a href='#'>Paypal Pro</a></div>
+    <div><a href='#'>Google Wallet</a></div>
+    <div><a href='#'>Dwolla</a></div>
+{% endblock %}

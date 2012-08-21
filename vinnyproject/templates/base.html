@@ -1,0 +1,73 @@
+{% load i18n staticfiles %}
+{% load url from future %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="utf-8" />
+    <title>{% block head_title_base %}{% block head_title %}{% endblock %} - Vinny Project{% endblock %}</title>
+
+    <link href="{% static "bootstrap-2.0.4/css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "bootstrap-2.0.4/css/bootstrap-responsive.css" %}" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
+    {% block extra_style %}{% endblock %}
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="{% url "home" %}">VINNY</a>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li><a href="{% url "payment_index" %}">{% trans "Payment" %}</a></li>
+                    </ul>
+                    <ul class="nav pull-right">
+                        <li><a href="{% url "admin:index" %}">{% trans "Admin page" %}</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-user icon-white"></i> {{ user }}
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url "auth_logout" %}"><i class="icon-off"></i> {% trans "Logout" %}</a></li>
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li><a href="{% url "auth_login" %}">{% trans "Login" %}</a></li> 
+                            <li><a href="{% url "registration_register" %}">{% trans "Register" %}</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        {% for message in messages %}
+            <div class="alert">
+                <a class="close" href="#" data-dismiss="alert">&times;</a>
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% block body %}
+        {% endblock %}
+
+        <hr>
+
+        <footer>
+            <p>&copy; Vinny Project 2012</p>
+        </footer>
+    </div>
+
+    <script src="{% static "jquery-1.7.2/jquery.min.js" %}"></script>
+    <script src="{% static "bootstrap-2.0.4/js/bootstrap.js" %}"></script>
+    {% block extra_script %}{% endblock %}
+</body>
+</html>
