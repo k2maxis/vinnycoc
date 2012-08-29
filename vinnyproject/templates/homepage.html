@@ -1,28 +1,175 @@
 {% extends "base.html" %}
 
-{% load i18n webdesign %}
+{% load i18n staticfiles %}
 
 {% block head_title_base %}Vinny Project{% endblock %}
 
-{% block body %}
-    <div class="container">
-        <div class="hero-unit">
-            <h3>Registration and Payment integration.</h3>
-        </div>
+{% block body_class %}home{% endblock %}
 
-        <div class="row">
-            <div class="span4">
-                <h2>{% trans "Demo" %}</h2>
-                <p>{% lorem %}</p>
+{% block body_base %}
+<div class="header">
+    <div class="header-inner">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="header-content pull-right">
+                        <span class="header-block"><img src="{% static "site/img/clipboard.png" %}" alt="" /><a href='#' class="header-text">REGISTER</a></span>
+                        <span class="header-block"><span class="header-text">|</span></span>
+                        <span class="header-block"><img src="{% static "site/img/lock.png" %}" alt="" /><a href='#' class="header-text">LOGIN</a></span>
+                        <span class="header-block"><span class="header-text">[or]</span></span>
+                        <span class="header-block"><img src="{% static "site/img/facebook.png" %}" alt="" /><a href='#' class="header-text header-text-fb">WITH FACEBOOK</a></span>
+                    </div>
+                </div>
             </div>
-            <div class="span4">
-                <h2>{% trans "Demo" %}</h2>
-                <p>{% lorem %}</p>
-            </div>
-            <div class="span4">
-                <h2>{% trans "Demo" %}</h2>
-                <p>{% lorem %}</p>
+        </div>
+        <hr />
+    </div>
+</div>
+
+<div class="search">
+    <div class="search-inner">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="search-images">
+                        <img src="{% static "site/img/logo_my.png" %}" alt="" class="image-left" />
+                        <img src="{% static "site/img/logo_text_dark.png" %}" alt="" class="image-right" />
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <div class="search-inputs-wrapper">
+                                <div class="search-inputs input-append">
+                                    <input type="text" name="q" placeholder="Enter your search here...">
+                                    <button class="btn" type="button"><i class="icon-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+<div class="content">
+    <hr class="content-sep-top" />
+
+    <div class="container">
+        <div class="row">
+            <div class="span8 functions">
+                <div class="function-wrapper">
+                    <div class="function">
+                        <a href='#'>
+                            <div class="image">
+                                <img src="{% static "site/img/car_man.png" %}" alt="" />
+                            </div>
+                            <div class="text">
+                                <div>{% trans "MANAGE MY CARS" %}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="function-wrapper">
+                    <div class="function">
+                        <a href='#'>
+                            <div class="image">
+                                <img src="{% static "site/img/car_res.png" %}" alt="" />
+                            </div>
+                            <div class="text">
+                                <div>{% trans "RESEARCH/ANALYTICS" %}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="function-wrapper">
+                    <div class="function">
+                        <a href='#'>
+                            <div class="image">
+                                <img src="{% static "site/img/car_buy.png" %}" alt="" />
+                            </div>
+                            <div class="text">
+                                <div>{% trans "BUY VEHICLE HISTORY REPORT" %}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="span4">
+                <div class="panel-wrapper">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div class="panel-header-inner">
+                                <img src="{% static "site/img/rss.png" %}" alt="rss" />
+                                <span class="text">CARS SCANNED (RSS)</span>
+                            </div>
+                        </div>
+                        <div class="panel-header-conner">
+                            <div class="panel-header-conner-left"></div>
+                            <div class="panel-header-conner-right"></div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="panel-scrollbar">
+                                <div class="track">
+                                    <div class="thumb">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel-viewport">
+                                 <div class="panel-content">
+                                    {% for i in '01234567890123456789' %}
+                                    <div class="panel-content-line">
+                                        <div class="panel-content-image">
+                                            <img src="{% static "site/img/car.png" %}" alt="" />
+                                        </div>
+                                        <div class="panel-content-text">
+                                            <p class="panel-content-title">2008 BMW 5 Series 535i</p>
+                                            <p class="panel-content-sum">4dr Sedan 535 RWD</p>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="content-sep-bottom" />
+
+        <div class="row">
+            <div class="span12">
+                <div class="social-link pull-right">
+                    <a href="#"><img src="{% static "site/img/link_facebook.png" %}" alt="facebook" /></a>
+                    <a href="#"><img src="{% static "site/img/link_twitter.png" %}" alt="twitter" /></a>
+                    <a href="#"><img src="{% static "site/img/link_youtube.png" %}" alt="youtube" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <hr class="footer-sep" />
+
+    <div class="container">
+        <div class="row">
+            <div class="span12 footer-content">
+                <a href="#">About</a> <span class="dot">&bull;</span>
+                <a href="#">Terms</a> <span class="dot">&bull;</span>
+                <a href="#">Privacy</a> <span class="dot">&bull;</span>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+<script type="text/javascript">
+    $(function () {
+        $('.panel-body').tinyscrollbar();   
+    });
+</script>
 {% endblock %}
