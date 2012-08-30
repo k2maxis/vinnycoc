@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load i18n staticfiles %}
+{% load url from future %}
 
 {% block head_title_base %}Vinny Project{% endblock %}
 
@@ -13,11 +14,11 @@
             <div class="row">
                 <div class="span12">
                     <div class="header-content pull-right">
-                        <span class="header-block"><img src="{% static "site/img/clipboard.png" %}" alt="" /><a href='#' class="header-text">REGISTER</a></span>
+                        <span class="header-block"><img src="{% static "site/img/clipboard.png" %}" alt="" /><a href="{% url "registration_register" %}" class="header-text">REGISTER</a></span>
                         <span class="header-block"><span class="header-text">|</span></span>
-                        <span class="header-block"><img src="{% static "site/img/lock.png" %}" alt="" /><a href='#' class="header-text">LOGIN</a></span>
+                        <span class="header-block"><img src="{% static "site/img/lock_dark.png" %}" alt="" /><a href="{% url "auth_login" %}" class="header-text">LOGIN</a></span>
                         <span class="header-block"><span class="header-text">[or]</span></span>
-                        <span class="header-block"><img src="{% static "site/img/facebook.png" %}" alt="" /><a href='#' class="header-text header-text-fb">WITH FACEBOOK</a></span>
+                        <span class="header-block"><img src="{% static "site/img/facebook.png" %}" alt="" /><a href="http://www.facebook.com/" class="header-text header-text-fb">WITH FACEBOOK</a></span>
                     </div>
                 </div>
             </div>
@@ -141,9 +142,9 @@
         <div class="row">
             <div class="span12">
                 <div class="social-link pull-right">
-                    <a href="#"><img src="{% static "site/img/link_facebook.png" %}" alt="facebook" /></a>
-                    <a href="#"><img src="{% static "site/img/link_twitter.png" %}" alt="twitter" /></a>
-                    <a href="#"><img src="{% static "site/img/link_youtube.png" %}" alt="youtube" /></a>
+                    <a href="http://www.facebook.com/vinnyapp"><img src="{% static "site/img/link_facebook.png" %}" alt="facebook" /></a>
+                    <a href="https://twitter.com/vinny_says"><img src="{% static "site/img/link_twitter.png" %}" alt="twitter" /></a>
+                    <a href="http://www.youtube.com/watch?v=nDzYrYRy24U&feature=youtu.be&hd=1"><img src="{% static "site/img/link_youtube.png" %}" alt="youtube" /></a>
                 </div>
             </div>
         </div>

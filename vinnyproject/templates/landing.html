@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% load i18n staticfiles webdesign %}
+{% load url from future %}
+
+{% block head_title_base %}Vinny Project{% endblock %}
+
+{% block body_class %}landing{% endblock %}
+
+{% block body_base %}
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <img src="{% static "site/img/logo.png" %}" alt="" class="logo" />
+                <img src="{% static "site/img/logo_text_light.png" %}" alt="VINNY" class="text" />
+                <img src="{% static "site/img/logo_slogan.png" %}" alt="MONEYBALL FOR USED CARS" class="slogan" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="span8 content-main">
+                <hr class="sep-first" />
+
+                <hr />
+
+                <p class="content-welcome-title">{% trans "WELCOME TO VINNY" %}</p>
+
+                <hr />
+
+                <p class="content-welcome-body">{% lorem %}</p>
+
+                <div class="content-links">
+                    <a href='#'><img src="{% static "site/img/button_app_store.png" %}" alt="App Store" /></a>
+                    <a href='#'><img src="{% static "site/img/button_google_play.png" %}" alt="Google Play" /></a>
+                    <div class="pull-right">
+                        <a href="http://www.youtube.com/watch?v=nDzYrYRy24U&feature=youtu.be&hd=1"><img src="{% static "site/img/button_watch_video.png" %}" alt="Watch Video" /></a>
+                    </div>
+                </div>
+            </div>
+            <div class="span4 content-images">
+                <img src="{% static "site/img/mobiles.png" %}" alt="Mobiles" />
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="span2">
+                <p class="content-auth-title">{% trans "Not a member yet?" %}</p>
+                <p class="content-auth-body">{% trans "Like us on Facebook and get a free car history report" %}</p>
+            </div>
+            <div class="span2">
+                <p class="content-auth-title">{% trans "Already a member?" %}</p>
+            </div>
+        </div>
+
+        <div class="row content-buttons">
+            <div class="span2">
+                <a href="{% url "registration_register" %}" class="btn btn-warning" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Sign up" %}" /> <span>{% trans "Sign up" %}</span></a>
+            </div>
+            <div class="span2">
+                <a href="{% url "auth_login" %}" class="btn btn-inverse" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Log in" %}" /> <span>{% trans "Log in" %}</span></a>
+            </div>
+            <div class="span8">
+                <div class="pull-right">
+                    <a href="https://twitter.com/vinny_says" class="btn btn-twitter" type="button"><img src="{% static "site/img/button_twitter.png" %}" alt="{% trans "Twitter" %}" /> <span>{% trans "Twitter" %}</span></a>
+                    <a href="http://www.facebook.com/vinnyapp" class="btn btn-facebook" type="button"><img src="{% static "site/img/button_facebook.png" %}" alt="{% trans "Facebook" %}" /> <span>{% trans "Facebook" %}</span></a>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row footer">
+            <div class="span12">
+                <a href="#">Your account</a> <span class="dot">&bull;</span>
+                <a href="#">About us</a> <span class="dot">&bull;</span>
+                <a href="#">Support</a> <span class="dot">&bull;</span>
+                <a href="#">Blog</a> <span class="dot">&bull;</span>
+                <a href="#">API</a> <span class="dot">&bull;</span>
+                <a href="#">Jobs</a> <span class="dot">&bull;</span>
+                <a href="#">Privacy</a> <span class="dot">&bull;</span>
+                <a href="#">Terms</a>
+                <div class="pull-right company-name">
+                    &copy; 2012 Vinny, Inc.
+                </div>
+            </div>
+        </div>
+
+        <hr />
+    </div>
+</div>
+{% endblock %}
