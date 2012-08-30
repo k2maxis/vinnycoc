@@ -6,11 +6,11 @@ from django.views.generic.simple import direct_to_template
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', direct_to_template, {'template': 'root.html'}, name='root'),
+    url(r'^a/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^a/', include(admin.site.urls)),
+    url(r'^admin/$', direct_to_template, {'template': 'root.html'}, name='root'),
     url(r'^home/$', direct_to_template, {'template': 'homepage.html'}, name='home'),
-    url(r'^land/$', direct_to_template, {'template': 'landing.html'}, name='land'),
+    url(r'^$', direct_to_template, {'template': 'landing.html'}, name='land'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^payment/', include('payment.urls')),
     url(r'^paypal/ipn/', include('paypal.standard.ipn.urls')),
