@@ -32,6 +32,7 @@
 body {
   font-size: 13px;
   font-family: Myriad Pro;
+  color: #4b4b4b;
 }
 .home .header {
   background-color: #769915;
@@ -131,7 +132,7 @@ body {
   background-color: #efc311 \9;
 }
 .home .content {
-  background: transparent url(../img/bg_content.png) repeat 0 0;
+  background: transparent url(../img/bg_content_home.png) repeat 0 0;
 }
 .home .content .content-sep-top {
   margin: 0;
@@ -147,15 +148,15 @@ body {
 .home .content .functions .function-wrapper {
   background: transparent url(../img/shadow_single.png) no-repeat 100% 68px;
 }
-.home .content .functions .function-wrapper .function {
+.home .content .functions .function {
   margin: 10px;
   height: 100px;
 }
-.home .content .functions .function-wrapper .function a {
+.home .content .functions .function a {
   text-decoration: none;
   color: black;
 }
-.home .content .functions .function-wrapper .function a .image {
+.home .content .functions .function a .image {
   background-color: white;
   width: 84px;
   padding: 2px;
@@ -166,14 +167,14 @@ body {
   -moz-border-radius: 500px;
   border-radius: 500px;
 }
-.home .content .functions .function-wrapper .function a .image img {
+.home .content .functions .function a .image img {
   background-color: #769915;
   padding: 20px;
   -webkit-border-radius: 500px;
   -moz-border-radius: 500px;
   border-radius: 500px;
 }
-.home .content .functions .function-wrapper .function a .text {
+.home .content .functions .function a .text {
   font-size: 30px;
   margin-left: 42px;
   /* half of .image */
@@ -184,7 +185,7 @@ body {
   position: relative;
   top: -68px;
 }
-.home .content .functions .function-wrapper .function a .text div {
+.home .content .functions .function a .text div {
   background: transparent url(../img/bg_function.png) repeat 0 0;
   padding: 16px 0 6px 80px;
   font-style: italic;
@@ -196,7 +197,7 @@ body {
 .home .content .panel-wrapper .panel {
   border: 1px solid #ccc;
   margin-top: 20px;
-  background: transparent url(../img/bg_panel.png) repeat 0 0;
+  background: transparent url(../img/bg_content.png) repeat 0 0;
   position: relative;
   -webkit-border-bottom-left-radius: 5px;
   -moz-border-radius-bottomleft: 5px;
@@ -259,7 +260,7 @@ body {
   height: 350px;
   position: relative;
   padding: 10px 0;
-  background: transparent url(../img/bg_panel.png) repeat 0 0;
+  background: transparent url(../img/bg_content.png) repeat 0 0;
   -webkit-border-bottom-left-radius: 5px;
   -moz-border-radius-bottomleft: 5px;
   border-bottom-left-radius: 5px;
@@ -269,11 +270,11 @@ body {
   /* disable select */
 
   /*-webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;*/
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;*/
 
 }
 .home .content .panel-wrapper .panel .panel-body .panel-scrollbar {
@@ -342,7 +343,7 @@ body {
   font-size: 12px;
   margin: 0;
 }
-.home .content .social-link {
+.home .content .social-links {
   padding-bottom: 20px;
 }
 .home .footer {
@@ -380,34 +381,57 @@ body {
 }
 .landing .header .text {
   position: relative;
-  top: 125px;
+  top: 122px;
   left: 15px;
 }
 .landing .header .slogan {
   position: relative;
-  top: 168px;
+  top: 166px;
   left: -232px;
 }
 .content {
-  background: transparent url(../img/bg_panel.png) repeat 0 0;
+  background: transparent url(../img/bg_content.png) repeat 0 0;
 }
 .content hr {
   border-top: 1px solid #ddd;
+  border-bottom: 1px solid white;
+}
+.content hr.sep-spec {
+  width: 150px;
+  margin: 10px auto 32px;
+  background-color: #536c0f;
+  height: 6px;
+  border: none;
+}
+.content hr.sep-double {
   border-bottom: 1px solid #ddd;
   height: 1px;
 }
-.content hr.sep-first {
-  width: 150px;
-  margin: 10px auto;
-  background-color: #536c0f;
-  height: 4px;
-  border: none;
+.content hr.sep-dash {
+  border-style: dashed;
+}
+.content hr.sep-extra-width {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.content hr.sep-bottom {
+  margin-bottom: 150px;
+}
+.content .margin {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.content .margin-left {
+  margin-left: 20px;
+}
+.content .margin-right {
+  margin-right: 20px;
 }
 .content .content-main {
-  background: transparent url(../img/bg_panel.png) repeat 0 0;
+  background: transparent url(../img/bg_content.png) repeat 0 0;
   position: relative;
   top: -135px;
-  height: 135px;
+  height: 155px;
   -webkit-border-top-left-radius: 10px;
   -moz-border-radius-topleft: 10px;
   border-top-left-radius: 10px;
@@ -416,6 +440,8 @@ body {
   border-top-right-radius: 10px;
 }
 .content .content-main .content-welcome-title {
+  /* BebasNeue font */
+
   font-size: 30px;
   font-weight: bold;
   text-align: center;
@@ -423,11 +449,13 @@ body {
   margin: 0;
   padding: 10px 0 0;
 }
-.content .content-main .content-welcome-body {
-  padding: 0 20px;
-}
-.content .content-main .content-links a {
-  padding: 0 20px;
+.content .content-main .content-links a > img {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-shadow: #769915 0px 3px;
+  -moz-box-shadow: #769915 0px 3px;
+  box-shadow: #769915 0px 3px;
 }
 .content .content-images {
   position: relative;
@@ -435,7 +463,15 @@ body {
   height: 0;
 }
 .content .content-auth-title {
-  font-size: 16px;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+}
+.content .content-auth-content {
+  font-family: Arial;
+  font-size: 9px;
+  line-height: 14px;
+  color: #a7a7a7;
 }
 .content .content-buttons img {
   margin-right: 5px;
@@ -489,4 +525,9 @@ body {
 }
 .content .footer .company-name {
   margin-top: 3px;
+}
+#myModal {
+  width: 670px;
+  margin-left: -335px;
+  background: transparent url(../img/bg_content.png) repeat 0 0;
 }

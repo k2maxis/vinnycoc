@@ -24,57 +24,57 @@
     <div class="container">
         <div class="row">
             <div class="span8 content-main">
-                <hr class="sep-first" />
+                <hr class="sep-spec" />
 
-                <hr />
+                <hr class="sep-double" />
 
                 <p class="content-welcome-title">{% trans "WELCOME TO VINNY" %}</p>
 
-                <hr />
+                <hr class="sep-double" />
 
-                <p class="content-welcome-body">{% lorem %}</p>
+                <p class="content-welcome-body margin">{% lorem %}</p>
 
-                <div class="content-links">
+                <div class="content-links margin">
                     <a href='#'><img src="{% static "site/img/button_app_store.png" %}" alt="App Store" /></a>
                     <a href='#'><img src="{% static "site/img/button_google_play.png" %}" alt="Google Play" /></a>
                     <div class="pull-right">
-                        <a href="http://www.youtube.com/watch?v=nDzYrYRy24U&feature=youtu.be&hd=1"><img src="{% static "site/img/button_watch_video.png" %}" alt="Watch Video" /></a>
+                        <a href="#myModal" data-toggle="modal"><img src="{% static "site/img/button_watch_video.png" %}" alt="Watch Video" /></a>
                     </div>
                 </div>
             </div>
             <div class="span4 content-images">
-                <img src="{% static "site/img/mobiles.png" %}" alt="Mobiles" />
+                <img src="{% static "site/img/mobiles.png" %}" alt="Mobile" />
             </div>
         </div>
 
-        <hr />
+        <hr class="sep-double sep-dash sep-extra-width" />
 
         <div class="row">
             <div class="span2">
-                <p class="content-auth-title">{% trans "Not a member yet?" %}</p>
-                <p class="content-auth-body">{% trans "Like us on Facebook and get a free car history report" %}</p>
+                <p class="content-auth-title margin-left">{% trans "Not a member yet?" %}</p>
+                <p class="content-auth-body margin-left">{% trans "Like us on Facebook and get a free car history report" %}</p>
             </div>
             <div class="span2">
-                <p class="content-auth-title">{% trans "Already a member?" %}</p>
+                <p class="content-auth-title margin-left">{% trans "Already a member?" %}</p>
             </div>
         </div>
 
         <div class="row content-buttons">
             <div class="span2">
-                <a href="{% url "registration_register" %}" class="btn btn-warning" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Sign up" %}" /> <span>{% trans "Sign up" %}</span></a>
+                <a href="{% url "registration_register" %}" class="btn btn-warning margin-left" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Sign up" %}" /> <span>{% trans "Sign up" %}</span></a>
             </div>
             <div class="span2">
-                <a href="{% url "auth_login" %}" class="btn btn-inverse" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Log in" %}" /> <span>{% trans "Log in" %}</span></a>
+                <a href="{% url "auth_login" %}" class="btn btn-inverse margin-left" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Log in" %}" /> <span>{% trans "Log in" %}</span></a>
             </div>
             <div class="span8">
                 <div class="pull-right">
-                    <a href="https://twitter.com/vinny_says" class="btn btn-twitter" type="button"><img src="{% static "site/img/button_twitter.png" %}" alt="{% trans "Twitter" %}" /> <span>{% trans "Twitter" %}</span></a>
-                    <a href="http://www.facebook.com/vinnyapp" class="btn btn-facebook" type="button"><img src="{% static "site/img/button_facebook.png" %}" alt="{% trans "Facebook" %}" /> <span>{% trans "Facebook" %}</span></a>
+                    <a href="https://twitter.com/vinny_says" class="btn btn-twitter" type="button"><img src="{% static "site/img/button_twitter.png" %}" alt="{% trans "Twitter" %}" /> <span>{% trans "Follow Us" %}</span></a>
+                    <a href="http://www.facebook.com/vinnyapp" class="btn btn-facebook margin-right" type="button"><img src="{% static "site/img/button_facebook.png" %}" alt="{% trans "Facebook" %}" /> <span>{% trans "Like Us" %}</span></a>
                 </div>
             </div>
         </div>
 
-        <hr />
+        <hr class="sep-extra-width" />
 
         <div class="row footer">
             <div class="span12">
@@ -92,7 +92,16 @@
             </div>
         </div>
 
-        <hr />
+        <hr class="sep-bottom sep-extra-width" />
     </div>
 </div>
+
+
+          <div id="myModal" class="modal hide">
+            <div class="modal-body">
+              <iframe width="640" height="360" src="http://www.youtube.com/embed/nDzYrYRy24U?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+
+
 {% endblock %}
