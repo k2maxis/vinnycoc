@@ -37,12 +37,10 @@
                         <img src="{% static "site/img/logo_text_dark.png" %}" alt="" class="image-right" />
                     </div>
                     <div class="control-group">
-                        <div class="controls">
-                            <div class="search-inputs-wrapper">
-                                <div class="search-inputs input-append">
-                                    <input type="text" name="q" placeholder="Enter your search here...">
-                                    <button class="btn" type="button"><i class="icon-search"></i></button>
-                                </div>
+                        <div class="controls search-inputs-wrapper shadow">
+                            <div class="search-inputs input-append">
+                                <input type="text" name="q" placeholder="Enter your search here...">
+                                <button class="btn" type="button"><i class="icon-search"></i></button>
                             </div>
                         </div>
                     </div>
@@ -58,45 +56,45 @@
     <div class="container">
         <div class="row">
             <div class="span8 functions">
-                <div class="function-wrapper">
-                    <div class="function">
-                        <a href='#'>
-                            <div class="image">
-                                <img src="{% static "site/img/car_man.png" %}" alt="" />
-                            </div>
+                <div class="function">
+                    <a href='#'>
+                        <div class="image">
+                            <img src="{% static "site/img/car_man.png" %}" alt="" />
+                        </div>
+                        <div class="text-wrapper shadow-right">
                             <div class="text">
                                 <div>{% trans "MANAGE MY CARS" %}</div>
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
-                <div class="function-wrapper">
-                    <div class="function">
-                        <a href='#'>
-                            <div class="image">
-                                <img src="{% static "site/img/car_res.png" %}" alt="" />
-                            </div>
+                <div class="function">
+                    <a href='#'>
+                        <div class="image">
+                            <img src="{% static "site/img/car_res.png" %}" alt="" />
+                        </div>
+                        <div class="text-wrapper shadow-right">
                             <div class="text">
                                 <div>{% trans "RESEARCH/ANALYTICS" %}</div>
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
-                <div class="function-wrapper">
-                    <div class="function">
-                        <a href='#'>
-                            <div class="image">
-                                <img src="{% static "site/img/car_buy.png" %}" alt="" />
-                            </div>
+                <div class="function">
+                    <a href='#'>
+                        <div class="image">
+                            <img src="{% static "site/img/car_buy.png" %}" alt="" />
+                        </div>
+                        <div class="text-wrapper shadow-right">
                             <div class="text">
                                 <div>{% trans "BUY VEHICLE HISTORY REPORT" %}</div>
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="span4">
-                <div class="panel-wrapper">
+                <div class="panel-wrapper shadow-right">
                     <div class="panel">
                         <div class="panel-header">
                             <div class="panel-header-inner">

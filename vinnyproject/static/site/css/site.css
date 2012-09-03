@@ -34,6 +34,63 @@ body {
   font-family: Myriad Pro;
   color: #4b4b4b;
 }
+.shadow {
+  position: relative;
+}
+.shadow:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 15px;
+  width: 50%;
+  height: 20%;
+  -webkit-box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.5);
+  left: 15px;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.shadow:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 15px;
+  width: 50%;
+  height: 20%;
+  -webkit-box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.5);
+  right: 15px;
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+.shadow-right {
+  position: relative;
+}
+.shadow-right:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 15px;
+  width: 50%;
+  height: 20%;
+  -webkit-box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.5);
+  right: 15px;
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
 .home .header {
   background-color: #769915;
   height: 30px;
@@ -81,10 +138,15 @@ body {
   margin-top: 50px;
 }
 .home .search .search-inner .search-inputs-wrapper {
-  background: transparent url(../img/shadow_double.png) no-repeat 50% 15px;
-  height: 70px;
+  z-index: 0;
+  /* help shadow showed correctly */
+
+  width: 528px;
+  margin: 0 auto;
 }
 .home .search .search-inner .search-inputs-wrapper .search-inputs {
+  position: relative;
+  z-index: 1;
   padding: 10px;
   background-color: #a9c622;
   width: 508px;
@@ -145,9 +207,6 @@ body {
 .home .content .functions {
   margin-top: 80px;
 }
-.home .content .functions .function-wrapper {
-  background: transparent url(../img/shadow_single.png) no-repeat 100% 68px;
-}
 .home .content .functions .function {
   margin: 10px;
   height: 100px;
@@ -174,25 +233,29 @@ body {
   -moz-border-radius: 500px;
   border-radius: 500px;
 }
-.home .content .functions .function a .text {
-  font-size: 30px;
+.home .content .functions .function a .text-wrapper {
   margin-left: 42px;
   /* half of .image */
 
-  border: 1px solid #769915;
-  padding: 1px;
   z-index: 1;
   position: relative;
   top: -68px;
 }
-.home .content .functions .function a .text div {
+.home .content .functions .function a .text-wrapper .text {
+  background-color: white;
+  font-size: 30px;
+  border: 1px solid #769915;
+  padding: 1px;
+}
+.home .content .functions .function a .text-wrapper .text div {
   background: transparent url(../img/bg_function.png) repeat 0 0;
   padding: 16px 0 6px 80px;
   font-style: italic;
 }
 .home .content .panel-wrapper {
-  background: transparent url(../img/shadow_single.png) no-repeat 100% 428px;
-  height: 440px;
+  z-index: 0;
+  /* help shadow showed correctly */
+
 }
 .home .content .panel-wrapper .panel {
   border: 1px solid #ccc;
