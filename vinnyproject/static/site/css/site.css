@@ -34,10 +34,10 @@ body {
   font-family: Myriad Pro;
   color: #4b4b4b;
 }
-.shadow {
+.shadow-horizontal {
   position: relative;
 }
-.shadow:before {
+.shadow-horizontal:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -54,7 +54,7 @@ body {
   -o-transform: rotate(-3deg);
   transform: rotate(-3deg);
 }
-.shadow:after {
+.shadow-horizontal:after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -71,10 +71,10 @@ body {
   -o-transform: rotate(3deg);
   transform: rotate(3deg);
 }
-.shadow-right {
+.shadow-horizontal-right {
   position: relative;
 }
-.shadow-right:after {
+.shadow-horizontal-right:after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -90,6 +90,36 @@ body {
   -ms-transform: rotate(3deg);
   -o-transform: rotate(3deg);
   transform: rotate(3deg);
+}
+.shadow-landing {
+  position: relative;
+  box-shadow: -10px 0 20px -15px rgba(0, 0, 0, 0.5), 10px 0 20px -15px rgba(0, 0, 0, 0.5), 0 -10px 20px -15px rgba(0, 0, 0, 0.5);
+}
+.shadow-landing:before,
+.shadow-landing:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 15px;
+  left: 2px;
+  height: 150px;
+  -webkit-box-shadow: 0 40px 15px 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 40px 15px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 40px 15px 10px rgba(0, 0, 0, 0.5);
+  -webkit-transform: rotate(-6deg);
+  -moz-transform: rotate(-6deg);
+  -ms-transform: rotate(-6deg);
+  -o-transform: rotate(-6deg);
+  transform: rotate(-6deg);
+}
+.shadow-landing:after {
+  left: auto;
+  right: 2px;
+  -webkit-transform: rotate(6deg);
+  -moz-transform: rotate(6deg);
+  -ms-transform: rotate(6deg);
+  -o-transform: rotate(6deg);
+  transform: rotate(6deg);
 }
 .home .header {
   background-color: #769915;
@@ -139,8 +169,6 @@ body {
 }
 .home .search .search-inner .search-inputs-wrapper {
   z-index: 0;
-  /* help shadow showed correctly */
-
   width: 528px;
   margin: 0 auto;
 }
@@ -235,8 +263,6 @@ body {
 }
 .home .content .functions .function a .text-wrapper {
   margin-left: 42px;
-  /* half of .image */
-
   z-index: 1;
   position: relative;
   top: -68px;
@@ -254,8 +280,6 @@ body {
 }
 .home .content .panel-wrapper {
   z-index: 0;
-  /* help shadow showed correctly */
-
 }
 .home .content .panel-wrapper .panel {
   border: 1px solid #ccc;
@@ -330,15 +354,6 @@ body {
   -webkit-border-bottom-right-radius: 5px;
   -moz-border-radius-bottomright: 5px;
   border-bottom-right-radius: 5px;
-  /* disable select */
-
-  /*-webkit-touch-callout: none;
-          -webkit-user-select: none;
-          -khtml-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;*/
-
 }
 .home .content .panel-wrapper .panel .panel-body .panel-scrollbar {
   position: absolute;
@@ -490,11 +505,14 @@ body {
 .content .margin-right {
   margin-right: 20px;
 }
-.content .content-main {
+.content .content-main-wrapper {
+  z-index: 0;
+}
+.content .content-main-wrapper .content-main {
   background: transparent url(../img/bg_content.png) repeat 0 0;
-  position: relative;
-  top: -135px;
-  height: 155px;
+  height: 300px;
+  margin-top: -135px;
+  padding-top: 5px;
   -webkit-border-top-left-radius: 10px;
   -moz-border-radius-topleft: 10px;
   border-top-left-radius: 10px;
@@ -502,9 +520,7 @@ body {
   -moz-border-radius-topright: 10px;
   border-top-right-radius: 10px;
 }
-.content .content-main .content-welcome-title {
-  /* BebasNeue font */
-
+.content .content-main-wrapper .content-main .content-welcome-title {
   font-size: 30px;
   font-weight: bold;
   text-align: center;
@@ -512,7 +528,13 @@ body {
   margin: 0;
   padding: 10px 0 0;
 }
-.content .content-main .content-links a > img {
+.content .content-main-wrapper .content-main .content-links a {
+  margin-right: 30px;
+}
+.content .content-main-wrapper .content-main .content-links a:last-child {
+  margin-right: 0;
+}
+.content .content-main-wrapper .content-main .content-links a > img {
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
@@ -589,7 +611,7 @@ body {
 .content .footer .company-name {
   margin-top: 3px;
 }
-#myModal {
+#youtube-modal {
   width: 670px;
   margin-left: -335px;
   background: transparent url(../img/bg_content.png) repeat 0 0;

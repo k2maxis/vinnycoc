@@ -22,13 +22,13 @@ body {
   color: #4b4b4b;
 }
 
-#shadow-mixins {
-  #shadow() {
+#shadowHorizontal {
+  #shadowHorizontal() {
     position: relative;
     //box-shadow: 0 1px 4px rgba(0,0,0,0.3), 0 0 20px rgba(0,0,0,0.1) inset;
   }
 
-  #shadowBeforeAfter() {
+  #shadowHalf() {
     content: "";
     position: absolute;
     z-index: -1;
@@ -38,35 +38,59 @@ body {
     .box-shadow(0 10px 10px 5px rgba(0,0,0,0.5));
   }
 
-  #shadowBefore() {
+  #shadowHalfLeft() {
     left: 15px;
     .rotate(-3deg);
   }
 
-  #shadowAfter() {
+  #shadowHalfRight() {
     right: 15px;
     .rotate(3deg);
   }
 
-  .shadow(@style) when (@style = both) {
-    #shadow;
-    &:before { #shadowBeforeAfter; #shadowBefore; }
-    &:after { #shadowBeforeAfter; #shadowAfter; }
+  .shadowHorizontal(@style) when (@style = both) {
+    #shadowHorizontal;
+    &:before { #shadowHalf; #shadowHalfLeft; }
+    &:after { #shadowHalf; #shadowHalfRight; }
   }
 
-  .shadow(@style) when (@style = left) {
-    #shadow;
-    &:before { #shadowBeforeAfter; #shadowBefore; }
+  .shadowHorizontal(@style) when (@style = left) {
+    #shadowHorizontal;
+    &:before { #shadowHalf; #shadowHalfLeft; }
   }
 
-  .shadow(@style) when (@style = right) {
-    #shadow;
-    &:after { #shadowBeforeAfter; #shadowAfter; }
+  .shadowHorizontal(@style) when (@style = right) {
+    #shadowHorizontal;
+    &:after { #shadowHalf; #shadowHalfRight; }
   }
 }
 
-.shadow { #shadow-mixins > .shadow(both); }
-.shadow-right { #shadow-mixins > .shadow(right); }
+.shadow-horizontal { #shadowHorizontal > .shadowHorizontal(both); }
+.shadow-horizontal-right { #shadowHorizontal > .shadowHorizontal(right); }
+
+.shadow-landing {  // used once
+  position: relative;
+  box-shadow: -10px 0 20px -15px rgba(0, 0, 0, 0.5),
+               10px 0 20px -15px rgba(0, 0, 0, 0.5),
+               0 -10px 20px -15px rgba(0, 0, 0, 0.5);
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 15px;
+    left: 2px;
+    height: 150px;
+    .box-shadow(0 40px 15px 10px rgba(0, 0, 0, 0.5));
+    .rotate(-6deg);
+  }
+
+  &:after {
+    left: auto;
+    right: 2px;
+    .rotate(6deg);
+  }
+}
 
 .home {
   .header {
@@ -126,7 +150,7 @@ body {
       }
 
       .search-inputs-wrapper {
-        z-index: 0;  /* help shadow showed correctly */
+        z-index: 0;  // help shadow showed correctly
         width: 528px;
         margin: 0 auto;
 
@@ -197,7 +221,7 @@ body {
           }
 
           .text-wrapper {
-            margin-left: 42px;  /* half of .image */
+            margin-left: 42px;  // half of .image
             z-index: 1;
             position: relative;
             top: -68px;
@@ -220,7 +244,7 @@ body {
     }
 
     .panel-wrapper {
-      z-index: 0;  /* help shadow showed correctly */
+      z-index: 0;  // help shadow showed correctly
 
       .panel {
         border: 1px solid #ccc;
@@ -292,13 +316,13 @@ body {
           .border-bottom-left-radius(5px);
           .border-bottom-right-radius(5px);
 
-          /* disable select */
-          /*-webkit-touch-callout: none;
-          -webkit-user-select: none;
-          -khtml-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;*/
+          // Disable selection
+          //-webkit-touch-callout: none;
+          //-webkit-user-select: none;
+          //-khtml-user-select: none;
+          //-moz-user-select: none;
+          //-ms-user-select: none;
+          //user-select: none;
 
           .panel-scrollbar {
             position: absolute;
@@ -483,27 +507,39 @@ body {
     margin-right: 20px;
   }
 
-  .content-main {
-    background: transparent url(../img/bg_content.png) repeat 0 0;
-    position: relative;
-    top: -135px;
-    height: 155px;
-    .border-top-left-radius(10px);
-    .border-top-right-radius(10px);
+  .content-main-wrapper {
+    z-index: 0;
 
-    .content-welcome-title {
-      /* BebasNeue font */
-      font-size: 30px;
-      font-weight: bold;
-      text-align: center;
-      color: darken(@green, 10%);
-      margin: 0;
-      padding: 10px 0 0;
-    }
+    .content-main {
+      background: transparent url(../img/bg_content.png) repeat 0 0;
+      height: 300px;
+      margin-top: -135px;
+      padding-top: 5px;
+      .border-top-left-radius(10px);
+      .border-top-right-radius(10px);
 
-    .content-links a > img {
-      .border-radius(8px);
-      .box-shadow(@green 0px 3px);
+      .content-welcome-title {
+        // BebasNeue font
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        color: darken(@green, 10%);
+        margin: 0;
+        padding: 10px 0 0;
+      }
+
+      .content-links a {
+        margin-right: 30px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        &> img {
+          .border-radius(8px);
+          .box-shadow(@green 0px 3px);
+        }
+      }
     }
   }
 
@@ -574,7 +610,7 @@ body {
   }
 }
 
-#myModal {
+#youtube-modal {
   width: 670px;
   margin-left: -335px;
   background: transparent url(../img/bg_content.png) repeat 0 0;

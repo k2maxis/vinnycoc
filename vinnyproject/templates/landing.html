@@ -23,27 +23,33 @@
 <div class="content">
     <div class="container">
         <div class="row">
-            <div class="span8 content-main">
-                <hr class="sep-spec" />
+            <div class="span8 ">
+                <div class="content-main-wrapper shadow-landing">
+                    <div class="content-main">
+                        <hr class="sep-spec" />
 
-                <hr class="sep-double" />
+                        <hr class="sep-double" />
 
-                <p class="content-welcome-title">{% trans "WELCOME TO VINNY" %}</p>
+                        <p class="content-welcome-title">{% trans "WELCOME TO VINNY" %}</p>
 
-                <hr class="sep-double" />
+                        <hr class="sep-double" />
 
-                <p class="content-welcome-body margin">{% lorem %}</p>
+                        <p class="content-welcome-body margin">{% lorem %}</p>
 
-                <div class="content-links margin">
-                    <a href='#'><img src="{% static "site/img/button_app_store.png" %}" alt="App Store" /></a>
-                    <a href='#'><img src="{% static "site/img/button_google_play.png" %}" alt="Google Play" /></a>
-                    <div class="pull-right">
-                        <a href="#myModal" data-toggle="modal"><img src="{% static "site/img/button_watch_video.png" %}" alt="Watch Video" /></a>
+                        <div class="content-links margin">
+                                <a href='#'><img src="{% static "site/img/button_app_store.png" %}" alt="App Store" /></a>
+                                <a href='#'><img src="{% static "site/img/button_google_play.png" %}" alt="Google Play" /></a>
+                            <div class="pull-right">
+                                <a href="#youtube-modal" data-toggle="modal"><img src="{% static "site/img/button_watch_video.png" %}" alt="Watch Video" /></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="span4 content-images">
-                <img src="{% static "site/img/mobiles.png" %}" alt="Mobile" />
+            <div class="span4">
+                <div class="content-images">
+                    <img src="{% static "site/img/mobiles.png" %}" alt="Mobile" />
+                </div>
             </div>
         </div>
 
@@ -96,12 +102,9 @@
     </div>
 </div>
 
-
-          <div id="myModal" class="modal hide">
-            <div class="modal-body">
-              <iframe width="640" height="360" src="http://www.youtube.com/embed/nDzYrYRy24U?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-
-
+<div id="youtube-modal" class="modal hide">
+  <div class="modal-body">
+    <iframe width="640" height="360" src="http://www.youtube.com/embed/nDzYrYRy24U?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
 {% endblock %}
