@@ -612,7 +612,21 @@ body {
   margin-top: 3px;
 }
 #youtube-modal {
-  width: 670px;
-  margin-left: -335px;
+  width: 680px;
+  margin-left: -340px;
   background: transparent url(../img/bg_content.png) repeat 0 0;
+}
+#youtube-modal .close {
+  display: none;
+}
+#youtube-modal:hover .close {
+  display: block;
+  float: auto;
+  position: absolute;
+  right: 3px;
+  top: 1px;
+  font-size: 24px;
+}
+#youtube-modal .modal-body {
+  padding: 20px;
 }
