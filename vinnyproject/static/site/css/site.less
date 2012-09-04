@@ -6,6 +6,12 @@
   src: url('../fonts/MyriadPro-Regular.otf') format('opentype');
 }
 
+@font-face {
+  font-family: "Myriad Pro";
+  src: url('../fonts/MyriadPro-Bold.otf') format('opentype');
+  font-weight: bold;
+}
+
 @green: #769915;  //#7b9818
 @lightGreen: #a9c622;
 @darkGreen: #3a4b0b;
@@ -436,7 +442,7 @@ body {
   }
 }
 
-.landing {
+.staticpage {
   .header {
     background: transparent url(../img/bg_header_landing.png) repeat-x 0 0;
     height: 419px;
@@ -512,7 +518,7 @@ body {
 
     .content-main {
       background: transparent url(../img/bg_content.png) repeat 0 0;
-      height: 300px;
+      min-height: 250px;
       margin-top: -135px;
       padding-top: 5px;
       .border-top-left-radius(10px);

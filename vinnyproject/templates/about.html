@@ -1,0 +1,29 @@
+{% extends "staticpage.html" %}
+
+{% load i18n static %}
+
+{% block head_title %}About Us{% endblock %}
+
+{% block content_title %}
+    {% trans "ABOUT US" %}
+{% endblock %}
+
+{% block content_body %}
+    {% blocktrans %}
+    <p>Vinny was started by two guys who believe that used car prices should be transparent and available to everybody.  Since they did not have any previous ties to the car industry, they were able to approach the industry with a view that buyers should not be disadvantaged at a car dealership or ripped off at every turn.</p>
+    <p>The amount of money involved in the car industry is staggering, with dealerships taking an average cut of $2500 per vehicle sale. Many mobile apps and websites make money off selling customer referrals, often exceeding $20 per personal phone number/email or even up to $500 when a sale is completed (bird-dogging).</p>
+    <p>Instead, Vinny was founded with a mission to be the advocate for the car buyer.  Our promise to you is that we will never sell your personal data to any dealerships.  We want to empower the car buyer with information, and push back the veil of opaque pricing and middlemen.</p>
+    <p>Join the data revolution!</p>
+    {% endblocktrans %}
+{% endblock %}
+
+{% block content_buttons %}
+    <div class="row content-buttons">
+        <div class="span12">
+            <div class="pull-right">
+                <a href="https://twitter.com/vinny_says" class="btn btn-twitter" type="button"><img src="{% static "site/img/button_twitter.png" %}" alt="{% trans "Twitter" %}" /> <span>{% trans "Follow Us" %}</span></a>
+                <a href="http://www.facebook.com/vinnyapp" class="btn btn-facebook margin-right" type="button"><img src="{% static "site/img/button_facebook.png" %}" alt="{% trans "Facebook" %}" /> <span>{% trans "Like Us" %}</span></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

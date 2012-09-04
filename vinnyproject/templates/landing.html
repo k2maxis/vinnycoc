@@ -1,111 +1,25 @@
-{% extends "base.html" %}
+{% extends "staticpage.html" %}
 
-{% load i18n staticfiles webdesign %}
-{% load url from future %}
+{% load i18n static %}
 
-{% block head_title_base %}Vinny Project{% endblock %}
+{% block content_title %}
+    {% trans "WELCOME TO VINNY" %}
+{% endblock %}
 
-{% block body_class %}landing{% endblock %}
+{% block content_body %}
+    {% blocktrans %}
+    <p>Vinny is your buddy in the used car business, watching your back so you don't get ripped off.
+       Within seconds, he will tell you the wholesale price of that car you are interested in buying.</p>
+    <p>Simply scan the VIN barcode on the drivers side door (or enter manually), and then smile when talking to the dealer.
+       Now you have actual market prices in your hand.</p>
+    <p>Negotiate with confidence.</p>
+    {% endblocktrans %}
+{% endblock %}
 
-{% block body_base %}
-<div class="header">
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                <img src="{% static "site/img/logo.png" %}" alt="" class="logo" />
-                <img src="{% static "site/img/logo_text_light.png" %}" alt="VINNY" class="text" />
-                <img src="{% static "site/img/logo_slogan.png" %}" alt="MONEYBALL FOR USED CARS" class="slogan" />
-            </div>
-        </div>
+{% block content_link %}
+    <a href='#'><img src="{% static "site/img/button_app_store.png" %}" alt="App Store" /></a>
+    <a href='#'><img src="{% static "site/img/button_google_play.png" %}" alt="Google Play" /></a>
+    <div class="pull-right">
+        <a href="#youtube-modal" data-toggle="modal"><img src="{% static "site/img/button_watch_video.png" %}" alt="Watch Video" /></a>
     </div>
-</div>
-
-<div class="content">
-    <div class="container">
-        <div class="row">
-            <div class="span8 ">
-                <div class="content-main-wrapper shadow-landing">
-                    <div class="content-main">
-                        <hr class="sep-spec" />
-
-                        <hr class="sep-double" />
-
-                        <p class="content-welcome-title">{% trans "WELCOME TO VINNY" %}</p>
-
-                        <hr class="sep-double" />
-
-                        <p class="content-welcome-body margin">{% lorem %}</p>
-
-                        <div class="content-links margin">
-                                <a href='#'><img src="{% static "site/img/button_app_store.png" %}" alt="App Store" /></a>
-                                <a href='#'><img src="{% static "site/img/button_google_play.png" %}" alt="Google Play" /></a>
-                            <div class="pull-right">
-                                <a href="#youtube-modal" data-toggle="modal"><img src="{% static "site/img/button_watch_video.png" %}" alt="Watch Video" /></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="span4">
-                <div class="content-images">
-                    <img src="{% static "site/img/mobiles.png" %}" alt="Mobile" />
-                </div>
-            </div>
-        </div>
-
-        <hr class="sep-double sep-dash sep-extra-width" />
-
-        <div class="row">
-            <div class="span2">
-                <p class="content-auth-title margin-left">{% trans "Not a member yet?" %}</p>
-                <p class="content-auth-body margin-left">{% trans "Like us on Facebook and get a free car history report" %}</p>
-            </div>
-            <div class="span2">
-                <p class="content-auth-title margin-left">{% trans "Already a member?" %}</p>
-            </div>
-        </div>
-
-        <div class="row content-buttons">
-            <div class="span2">
-                <a href="{% url "registration_register" %}" class="btn btn-warning margin-left" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Sign up" %}" /> <span>{% trans "Sign up" %}</span></a>
-            </div>
-            <div class="span2">
-                <a href="{% url "auth_login" %}" class="btn btn-inverse margin-left" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Log in" %}" /> <span>{% trans "Log in" %}</span></a>
-            </div>
-            <div class="span8">
-                <div class="pull-right">
-                    <a href="https://twitter.com/vinny_says" class="btn btn-twitter" type="button"><img src="{% static "site/img/button_twitter.png" %}" alt="{% trans "Twitter" %}" /> <span>{% trans "Follow Us" %}</span></a>
-                    <a href="http://www.facebook.com/vinnyapp" class="btn btn-facebook margin-right" type="button"><img src="{% static "site/img/button_facebook.png" %}" alt="{% trans "Facebook" %}" /> <span>{% trans "Like Us" %}</span></a>
-                </div>
-            </div>
-        </div>
-
-        <hr class="sep-extra-width" />
-
-        <div class="row footer">
-            <div class="span12">
-                <a href="#">Your account</a> <span class="dot">&bull;</span>
-                <a href="#">About us</a> <span class="dot">&bull;</span>
-                <a href="#">Support</a> <span class="dot">&bull;</span>
-                <a href="#">Blog</a> <span class="dot">&bull;</span>
-                <a href="#">API</a> <span class="dot">&bull;</span>
-                <a href="#">Jobs</a> <span class="dot">&bull;</span>
-                <a href="#">Privacy</a> <span class="dot">&bull;</span>
-                <a href="#">Terms</a>
-                <div class="pull-right company-name">
-                    &copy; 2012 Vinny, Inc.
-                </div>
-            </div>
-        </div>
-
-        <hr class="sep-bottom sep-extra-width" />
-    </div>
-</div>
-
-<div id="youtube-modal" class="modal hide">
-  <button type="button" class="close" data-dismiss="modal">×</button>
-  <div class="modal-body">
-    <iframe width="640" height="360" src="http://www.youtube.com/embed/nDzYrYRy24U?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
 {% endblock %}

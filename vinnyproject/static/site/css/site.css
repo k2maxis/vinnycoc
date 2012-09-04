@@ -29,6 +29,11 @@
   font-family: "Myriad Pro";
   src: url('../fonts/MyriadPro-Regular.otf') format('opentype');
 }
+@font-face {
+  font-family: "Myriad Pro";
+  src: url('../fonts/MyriadPro-Bold.otf') format('opentype');
+  font-weight: bold;
+}
 body {
   font-size: 13px;
   font-family: Myriad Pro;
@@ -449,20 +454,20 @@ body {
   position: relative;
   top: 3px;
 }
-.landing .header {
+.staticpage .header {
   background: transparent url(../img/bg_header_landing.png) repeat-x 0 0;
   height: 419px;
 }
-.landing .header .logo {
+.staticpage .header .logo {
   position: relative;
   top: 130px;
 }
-.landing .header .text {
+.staticpage .header .text {
   position: relative;
   top: 122px;
   left: 15px;
 }
-.landing .header .slogan {
+.staticpage .header .slogan {
   position: relative;
   top: 166px;
   left: -232px;
@@ -510,7 +515,7 @@ body {
 }
 .content .content-main-wrapper .content-main {
   background: transparent url(../img/bg_content.png) repeat 0 0;
-  height: 300px;
+  min-height: 250px;
   margin-top: -135px;
   padding-top: 5px;
   -webkit-border-top-left-radius: 10px;
