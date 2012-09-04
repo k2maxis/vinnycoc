@@ -1,6 +1,7 @@
 {% extends "staticpage.html" %}
 
 {% load i18n static %}
+{% load url from future %}
 
 {% block head_title %}Jobs{% endblock %}
 
@@ -9,9 +10,10 @@
 {% endblock %}
 
 {% block content_body %}
+    {% url "support" as support_url %}
     {% blocktrans %}
     <p>We are always looking for great people to join the used car data revolution,
-    so if you are interested in working with us, laydown some feedback on our support forum.
+    so if you are interested in working with us, laydown some feedback on our <a href="{{ support_url }}" class="support-link">support forum</a>.
     Inspire us with a new idea.</p>
     {% endblocktrans %}
 {% endblock %}
