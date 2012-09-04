@@ -1,15 +1,19 @@
 {% extends "registration/base.html" %}
 
-{% load i18n bootstrap_tags %}
+{% load i18n bootstrap_tags facebook %}
 {% load url from future %}
 
 {% block body %}
 <form method="POST" action=".">{% csrf_token %}
     {{ form|as_bootstrap }}
     
-    <input type="submit" value="{% trans 'Log in' %}" />
+    <input type="submit" value="{% trans 'Log in' %}" class="btn" />
     <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
-<p>{% trans "Forgot password" %}? <a href="{% url "auth_password_reset" %}">{% trans "Reset it" %}</a>!</p>
+<p>{% trans "Forgot password" %}? <a href="{% url "auth_password_reset" %}">{% trans "Reset it" %}!</a></p>
+
+<p>{% trans "As an alternative, you can use your Facebook account to sign up. Just click the button below." %}</p>
+
+{% facebook_button %}
 {% endblock %}

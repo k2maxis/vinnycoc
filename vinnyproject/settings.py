@@ -127,6 +127,8 @@ INSTALLED_APPS = (
     'django_forms_bootstrap',
 
     'registration',
+    'socialregistration',
+    'socialregistration.contrib.facebook',
 
     'payment',
     'payment.modules.paypal',  # before paypal.* to override templates
@@ -165,6 +167,14 @@ LOGGING = {
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'socialregistration.contrib.facebook.auth.FacebookAuth',
+)
+
+FACEBOOK_APP_ID = '122680969595'
+FACEBOOK_SECRET_KEY = 'da522cefea44c94010b19517e2b45385'
 
 DEFAULT_FROM_EMAIL = 'Vinny <vinnyprojectmail@gmail.com>'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
