@@ -536,6 +536,9 @@ body {
 .content .content-main-wrapper .content-main .content-links a {
   margin-right: 30px;
 }
+.content .content-main-wrapper .content-main .content-links a:focus {
+  outline: 0;
+}
 .content .content-main-wrapper .content-main .content-links a:last-child {
   margin-right: 0;
 }
@@ -628,8 +631,8 @@ body {
   display: block;
   float: auto;
   position: absolute;
-  right: 3px;
-  top: 1px;
+  right: 4px;
+  top: 2px;
   font-size: 24px;
 }
 #youtube-modal .modal-body {

@@ -108,23 +108,57 @@
 <div id="youtube-modal" class="modal hide">
   <button type="button" class="close" data-dismiss="modal">×</button>
   <div class="modal-body">
-    <iframe width="640" height="360" src="http://www.youtube.com/embed/nDzYrYRy24U?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+    <div id="youtube-player"></div>
   </div>
 </div>
 {% endblock %}
 
 {% block extra_script %}
 <script type="text/javascript">
+  // Uservoice
   var uvOptions = {};
   (function() {
     var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
     uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/SkDP3CiAJFwmNn0YClscA.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
   })();
+
+  // Support link triggers Uservoice
   $(function() {
     $('.support-link').click(function() {
       $('#uvTabLabel').click();
       return false;
+    });
+  });
+
+  // Youtube player controller
+  var tag = document.createElement('script');
+  tag.src = "//www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  var player;
+  var playerIsReady = false;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-player', {
+      height: '360',
+      width: '640',
+      videoId: 'nDzYrYRy24U',
+      events: {
+        onReady: function(event) {
+          event.target.playVideo();
+          playerIsReady = true;
+        },
+      },
+    });
+  }
+
+  // Auto start/stop when show and/hide modal
+  $(function() {
+    $('#youtube-modal').on('shown', function() {
+      if (playerIsReady) player.seekTo(0);
+    });
+    $('#youtube-modal').on('hide', function() {
+      if (playerIsReady) player.stopVideo();
     });
   });
 </script>
