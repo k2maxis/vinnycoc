@@ -82,8 +82,8 @@
             <div class="span2">
                 {#<a href="{% url "registration_register" %}" class="btn btn-warning margin-left" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Sign up" %}" /> <span>{% trans "Sign up" %}</span></a>#}
                 <form class="connect-button" name="login" method="post" action="{% url "socialregistration:facebook:redirect" %}">{% csrf_token %}
-                    <button onclick="this.form.submit();" class="btn btn-warning margin-left" type="button">
-                        <img src="{% static "site/img/lock_light.png" %}" alt="" /> <span>{% trans "Sign up" %}</span>
+                    <button onclick="this.form.submit();" class="btn btn-connect margin-left" type="button">
+                        <img src="{% static "site/img/button_facebook.png" %}" alt="" /> <span>{% trans "Connect" %}</span>
                     </button>
                 </form>
             </div>
