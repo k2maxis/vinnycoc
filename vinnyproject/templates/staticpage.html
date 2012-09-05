@@ -68,15 +68,27 @@
 
         <div class="row content-buttons">
             <div class="span2">
-                <a href="{% url "registration_register" %}" class="btn btn-warning margin-left" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Sign up" %}" /> <span>{% trans "Sign up" %}</span></a>
+                {#<a href="{% url "registration_register" %}" class="btn btn-warning margin-left" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Sign up" %}" /> <span>{% trans "Sign up" %}</span></a>#}
+                <form class="connect-button" name="login" method="post" action="{% url "socialregistration:facebook:redirect" %}">{% csrf_token %}
+                    <button onclick="this.form.submit();" class="btn btn-warning margin-left" type="button">
+                        <img src="{% static "site/img/lock_light.png" %}" alt="" /> <span>{% trans "Sign up" %}</span>
+                    </button>
+                </form>
             </div>
             <div class="span2">
-                <a href="{% url "auth_login" %}" class="btn btn-inverse margin-left" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Log in" %}" /> <span>{% trans "Log in" %}</span></a>
+                {#<a href="{% url "auth_login" %}" class="btn btn-inverse margin-left" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Log in" %}" /> <span>{% trans "Log in" %}</span></a>#}
+                <a class="btn btn-inverse margin-left login-ajax" type="button" data-url="{% url "ajax_login" %}">
+                    <img src="{% static "site/img/lock_light.png" %}" alt="" /> <span>{% trans "Log in" %}</span>
+                </a>
             </div>
             <div class="span8">
                 <div class="pull-right">
-                    <a href="https://twitter.com/vinny_says" class="btn btn-twitter" type="button"><img src="{% static "site/img/button_twitter.png" %}" alt="{% trans "Twitter" %}" /> <span>{% trans "Follow Us" %}</span></a>
-                    <a href="http://www.facebook.com/vinnyapp" class="btn btn-facebook margin-right" type="button"><img src="{% static "site/img/button_facebook.png" %}" alt="{% trans "Facebook" %}" /> <span>{% trans "Like Us" %}</span></a>
+                    <a href="http://twitter.com/vinny_says" class="btn btn-twitter" type="button">
+                        <img src="{% static "site/img/button_twitter.png" %}" alt="" /> <span>{% trans "Follow Us" %}</span>
+                    </a>
+                    <a href="http://www.facebook.com/vinnyapp" class="btn btn-facebook margin-right" type="button">
+                        <img src="{% static "site/img/button_facebook.png" %}" alt="" /> <span>{% trans "Like Us" %}</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -106,10 +118,10 @@
 </div>
 
 <div id="youtube-modal" class="modal hide">
-  <button type="button" class="close" data-dismiss="modal">×</button>
-  <div class="modal-body">
-    <div id="youtube-player"></div>
-  </div>
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <div class="modal-body">
+        <div id="youtube-player"></div>
+    </div>
 </div>
 {% endblock %}
 
@@ -161,5 +173,33 @@
       if (playerIsReady) player.stopVideo();
     });
   });
+
+    // Ajax login for class login-ajax
+    $(function() {
+        $('.login-ajax').click(function() {
+            $.get($(this).data('url'), function(data) {
+                var $loginOverlay = $('<div>')
+                                        .modal({backdrop: true, keyboard: true})
+                                        .appendTo('body');
+
+                var loginSubmit = function() {
+                    $(this).ajaxSubmit({
+                        success: function(data) {
+                            if (data.location)
+                                window.location.href = data.location;
+                            else
+                                $loginOverlay.html(data.html)
+                                             .find('form').submit(loginSubmit);
+                        }
+                    });
+                    return false;
+                };
+
+                $loginOverlay.html(data.html)
+                             .find('form').submit(loginSubmit);
+            })
+        });
+        return false;
+    });
 </script>
 {% endblock %}

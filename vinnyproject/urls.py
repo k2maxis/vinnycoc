@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^payment/', include('payment.urls')),
     url(r'^paypal/ipn/', include('paypal.standard.ipn.urls')),
     url(r'^paypal/pdt/', include('paypal.standard.pdt.urls')),
+    url(r'^ajax/login/$', 'vinnyproject.views.ajax_login', name='ajax_login'),
 )
 
 # Should remove if static files served separately (e.g. S3, etc.)

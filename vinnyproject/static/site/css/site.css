@@ -34,7 +34,10 @@
   src: url('../fonts/MyriadPro-Bold.otf') format('opentype');
   font-weight: bold;
 }
-body {
+body,
+button,
+input[type=button],
+input[type=submit] {
   font-size: 13px;
   font-family: Myriad Pro;
   color: #4b4b4b;
@@ -637,4 +640,9 @@ body {
 }
 #youtube-modal .modal-body {
   padding: 20px;
+}
+.modal .btn {
+  font-size: 12px;
+  padding-top: 5px;
+  padding-bottom: 3px;
 }
