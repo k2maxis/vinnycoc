@@ -70,22 +70,30 @@
         {% block content_buttons %}
         <div class="row">
             <div class="span2">
-                <p class="content-auth-title margin-left">{% trans "Not a member yet?" %}</p>
+                <p class="content-auth-title margin-left">{% trans "Facebook Connect" %}</p>
                 <p class="content-auth-body margin-left">{% trans "Like us on Facebook and get a free car history report" %}</p>
             </div>
             <div class="span2">
                 <p class="content-auth-title margin-left">{% trans "Already a member?" %}</p>
             </div>
+            <div class="span2">
+                <p class="content-auth-title margin-left">{% trans "Not a member yet?" %}</p>
+            </div>
         </div>
 
         <div class="row content-buttons">
             <div class="span2">
-                {#<a href="{% url "registration_register" %}" class="btn btn-warning margin-left" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Sign up" %}" /> <span>{% trans "Sign up" %}</span></a>#}
+                {% comment %}
                 <form class="connect-button" name="login" method="post" action="{% url "socialregistration:facebook:redirect" %}">{% csrf_token %}
                     <button onclick="this.form.submit();" class="btn btn-connect margin-left" type="button">
                         <img src="{% static "site/img/button_facebook.png" %}" alt="" /> <span>{% trans "Connect" %}</span>
                     </button>
                 </form>
+                {% endcomment %}
+                <button class="btn btn-connect margin-left" type="button" id="facebook-connect" data-url="{% url "ajax_fb_connect" %}">
+                    <img src="{% static "site/img/button_facebook.png" %}" alt="" /> <span>{% trans "Connect" %}</span>
+                </button>
+                <div class="content-avatar"></div>
             </div>
             <div class="span2">
                 {#<a href="{% url "auth_login" %}" class="btn btn-inverse margin-left" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Log in" %}" /> <span>{% trans "Log in" %}</span></a>#}
@@ -93,7 +101,12 @@
                     <img src="{% static "site/img/lock_light.png" %}" alt="" /> <span>{% trans "Log in" %}</span>
                 </a>
             </div>
-            <div class="span8">
+            <div class="span2">
+                <a href="{% url "registration_register" %}" class="btn btn-warning margin-left" type="button">
+                    <img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Sign up" %}" /> <span>{% trans "Sign up" %}</span>
+                </a>
+            </div>
+            <div class="span6">
                 <div class="pull-right">
                     <a href="http://twitter.com/vinny_says" class="btn btn-twitter" type="button">
                         <img src="{% static "site/img/button_twitter.png" %}" alt="" /> <span>{% trans "Follow Us" %}</span>
@@ -211,6 +224,63 @@
             })
         });
         return false;
+    });
+
+    // Facebook connect button
+    window.handleResponse = function(response, createUserUrl) {
+        if (response.status == "connected") {
+            var imageUrl = 'http://graph.facebook.com/' + response.authResponse.userID + '/picture';
+            $('.content-avatar').html('<img src="'+ imageUrl + '" alt="" />')
+            if (typeof createUserUrl !== "undefined" )
+                $.post(createUserUrl, response.authResponse, function(data) {
+                    console.log(data);
+                })
+        } else {
+            $('.content-avatar').html('')
+        }
+    }
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId  : '{{ SETTINGS.FACEBOOK_APP_ID }}',
+            status : true,
+            cookie : true,
+            xfbml  : true,
+        });
+
+        FB.getLoginStatus(function(response) {
+            //console.log('FB.getLoginStatus');
+            //console.log(response);
+            handleResponse(response);
+        });
+    };
+
+    (function(d){
+         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement('script'); js.id = id; js.async = true;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         ref.parentNode.insertBefore(js, ref);
+    }(document));
+    
+    $(function() {
+        $('#facebook-connect').one('click', function() {
+            var self = this;
+
+            FB.Event.subscribe('auth.login', function (response) {
+                //console.log("FB.Event.subscribe('auth.login')");
+                //console.log(response);
+                handleResponse(response, $(self).data('url'));
+            });
+
+            FB.Event.subscribe('auth.logout', function (response) {
+                //console.log("FB.Event.subscribe('auth.logout')");
+                //console.log(response);
+                handleResponse(response);
+            });
+        }).click(function() {
+            FB.login();
+        });
     });
 </script>
 {% endblock %}

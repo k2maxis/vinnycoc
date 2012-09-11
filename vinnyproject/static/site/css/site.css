@@ -662,6 +662,13 @@ input[type=submit] {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff798fb5', endColorstr='#ff2d4f8b', GradientType=0);
   margin-left: 10px;
 }
+.content .content-buttons .content-avatar {
+  display: inline;
+}
+.content .content-buttons .content-avatar img {
+  width: 28px;
+  height: 28px;
+}
 .content .footer a {
   color: #3d3d3d;
 }

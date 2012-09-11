@@ -46,3 +46,47 @@ def ajax_login(request, template_name='ajax_login.html'):
             "html": render_to_string(template_name, {'form': form}, RequestContext(request)),
         }
     return HttpResponse(json.dumps(data), content_type="application/json")
+
+
+import uuid
+
+from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
+from socialregistration.contrib.facebook.models import FacebookProfile
+
+# TODO: review to remove socialregistration or not
+#       review to reuse the setup (callback) or not
+@csrf_exempt
+@ajax_required
+@require_POST
+def facebook_connect(request):
+    """
+    Create or get user from Facebook auth response
+
+        authResponse = {
+            accessToken: string,
+            expiresIn: number,
+            signedRequest: string,
+            userID: string
+        }
+    """
+
+    # TODO: verify request.POST
+
+    profile, created  = FacebookProfile.objects.get_or_create(
+                            uid=request.POST['userID'],
+                            site=Site.objects.get_current(),
+                            defaults={
+                                'user': User.objects.create(username=str(uuid.uuid4()))
+                            })
+
+    data = {
+        'username': profile.user.username,
+        'status': "new" if created else "exist",
+    }
+
+    # TODO: check whether the FacebookAccessToken created or not
+
+    return HttpResponse(json.dumps(data), content_type="application/json")
