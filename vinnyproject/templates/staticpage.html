@@ -20,6 +20,7 @@
             </div>
         </div>
 
+        {% block header_nav %}
         <div class="row">
             <div class="span12">
                 <div class="pull-right navigator">
@@ -31,6 +32,7 @@
                 </div>
             </div>
         </div>
+        {% endblock %}
     </div>
 </div>
 
@@ -152,134 +154,19 @@
 
 {% block extra_script %}
 <script type="text/javascript">
-  // Uservoice
-  var uvOptions = {};
-  (function() {
-    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/SkDP3CiAJFwmNn0YClscA.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
-  })();
+    // Uservoice
+    var uvOptions = {};
+    (function() {
+        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/SkDP3CiAJFwmNn0YClscA.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+    })();
 
-  // Support link triggers Uservoice
-  $(function() {
-    $('.support-link').click(function() {
-      $('#uvTabLabel').click();
-      return false;
-    });
-  });
-
-  // Youtube player controller
-  var tag = document.createElement('script');
-  tag.src = "//www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  var player;
-  var playerIsReady = false;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('youtube-player', {
-      height: '360',
-      width: '640',
-      videoId: 'nDzYrYRy24U',
-      events: {
-        onReady: function(event) {
-          playerIsReady = true;
-        },
-      },
-    });
-  }
-
-  // Auto start/stop when show and/hide modal
-  $(function() {
-    $('#youtube-modal').on('shown', function() {
-      if (playerIsReady) player.seekTo(0);
-    });
-    $('#youtube-modal').on('hide', function() {
-      if (playerIsReady) player.stopVideo();
-    });
-  });
-
-    // Ajax login for class login-ajax
+    // Support link triggers Uservoice
     $(function() {
-        $('.login-ajax').click(function() {
-            $.get($(this).data('url'), function(data) {
-                var $loginOverlay = $('<div>')
-                                        .modal({backdrop: true, keyboard: true})
-                                        .appendTo('body');
-
-                var loginSubmit = function() {
-                    $(this).ajaxSubmit({
-                        success: function(data) {
-                            if (data.location)
-                                window.location.href = data.location;
-                            else
-                                $loginOverlay.html(data.html)
-                                             .find('form').submit(loginSubmit);
-                        }
-                    });
-                    return false;
-                };
-
-                $loginOverlay.html(data.html)
-                             .find('form').submit(loginSubmit);
-            })
-        });
-        return false;
-    });
-
-    // Facebook connect button
-    window.handleResponse = function(response, createUserUrl) {
-        if (response.status == "connected") {
-            var imageUrl = 'http://graph.facebook.com/' + response.authResponse.userID + '/picture';
-            $('.content-avatar').html('<img src="'+ imageUrl + '" alt="" />')
-            if (typeof createUserUrl !== "undefined" )
-                $.post(createUserUrl, response.authResponse, function(data) {
-                    console.log(data);
-                })
-        } else {
-            $('.content-avatar').html('')
-        }
-    }
-
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId  : '{{ SETTINGS.FACEBOOK_APP_ID }}',
-            status : true,
-            cookie : true,
-            xfbml  : true,
-        });
-
-        FB.getLoginStatus(function(response) {
-            //console.log('FB.getLoginStatus');
-            //console.log(response);
-            handleResponse(response);
-        });
-    };
-
-    (function(d){
-         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement('script'); js.id = id; js.async = true;
-         js.src = "//connect.facebook.net/en_US/all.js";
-         ref.parentNode.insertBefore(js, ref);
-    }(document));
-    
-    $(function() {
-        $('#facebook-connect').one('click', function() {
-            var self = this;
-
-            FB.Event.subscribe('auth.login', function (response) {
-                //console.log("FB.Event.subscribe('auth.login')");
-                //console.log(response);
-                handleResponse(response, $(self).data('url'));
-            });
-
-            FB.Event.subscribe('auth.logout', function (response) {
-                //console.log("FB.Event.subscribe('auth.logout')");
-                //console.log(response);
-                handleResponse(response);
-            });
-        }).click(function() {
-            FB.login();
+        $('.support-link').click(function() {
+            $('#uvTabLabel').click();
+            return false;
         });
     });
 </script>
