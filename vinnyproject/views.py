@@ -79,7 +79,7 @@ def facebook_connect(request):
                             uid=request.POST['userID'],
                             site=Site.objects.get_current(),
                             defaults={
-                                'user': User.objects.create(username=str(uuid.uuid4()))
+                                'user': User.objects.create(username=uuid.uuid4().hex[:30])
                             })
 
     data = {
