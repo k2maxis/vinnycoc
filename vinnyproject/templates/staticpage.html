@@ -18,20 +18,6 @@
                 </a>
             </div>
         </div>
-
-        {% block header_nav %}
-        <div class="row">
-            <div class="span12">
-                <div class="pull-right navigator">
-                    <a href="{% url "about" %}">About us</a> <span class="dot">&bull;</span>
-                    <a href="#" class="support-link">Support</a> <span class="dot">&bull;</span>
-                    <a href="{% url "jobs" %}">Jobs</a> <span class="dot">&bull;</span>
-                    <a href="{% url "investors" %}">Investors</a> <span class="dot">&bull;</span>
-                    <a href="{% url "terms" %}">Terms</a>
-                </div>
-            </div>
-        </div>
-        {% endblock %}
     </div>
 </div>
 
@@ -42,6 +28,16 @@
                 <div class="content-main-wrapper shadow-landing">
                     <div class="content-main">
                         <hr class="sep-spec" />
+
+                        {% block content_nav %}
+                        <div class="content-navigator pull-right">
+                            <a href="{% url "about" %}">About us</a> <span class="dot">&bull;</span>
+                            <a href="#" class="support-link">Support</a> <span class="dot">&bull;</span>
+                            <a href="{% url "jobs" %}">Jobs</a> <span class="dot">&bull;</span>
+                            <a href="{% url "investors" %}">Investors</a> <span class="dot">&bull;</span>
+                            <a href="{% url "terms" %}">Terms</a>
+                        </div>
+                        {% endblock %}
 
                         <hr class="sep-double" />
 
@@ -63,62 +59,21 @@
                 <div class="content-images">
                     <img src="{% static "site/img/mobiles.png" %}" alt="Mobile" />
                 </div>
-            </div>
-        </div>
 
-        <hr class="sep-double sep-dash sep-extra-width" />
-
-        {% block content_buttons %}
-        <div class="row">
-            <div class="span2">
-                <p class="content-auth-title margin-left">{% trans "Facebook Connect" %}</p>
-                <p class="content-auth-body margin-left">{% trans "Like us on Facebook and get a free car history report" %}</p>
-            </div>
-            <div class="span2">
-                <p class="content-auth-title margin-left">{% trans "Already a member?" %}</p>
-            </div>
-            <div class="span2">
-                <p class="content-auth-title margin-left">{% trans "Not a member yet?" %}</p>
-            </div>
-        </div>
-
-        <div class="row content-buttons">
-            <div class="span2">
-                {% comment %}
-                <form class="connect-button" name="login" method="post" action="{% url "socialregistration:facebook:redirect" %}">{% csrf_token %}
-                    <button onclick="this.form.submit();" class="btn btn-connect margin-left" type="button">
-                        <img src="{% static "site/img/button_facebook.png" %}" alt="" /> <span>{% trans "Connect" %}</span>
-                    </button>
-                </form>
-                {% endcomment %}
-                <button class="btn btn-connect margin-left" type="button" id="facebook-connect" data-url="{% url "ajax_fb_connect" %}">
-                    <img src="{% static "site/img/button_facebook.png" %}" alt="" /> <span>{% trans "Connect" %}</span>
-                </button>
-                <div class="content-avatar"></div>
-            </div>
-            <div class="span2">
-                {#<a href="{% url "auth_login" %}" class="btn btn-inverse margin-left" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Log in" %}" /> <span>{% trans "Log in" %}</span></a>#}
-                <a class="btn btn-inverse margin-left login-ajax" type="button" data-url="{% url "ajax_login" %}">
-                    <img src="{% static "site/img/lock_light.png" %}" alt="" /> <span>{% trans "Log in" %}</span>
-                </a>
-            </div>
-            <div class="span2">
-                <a href="{% url "registration_register" %}" class="btn btn-warning margin-left" type="button">
-                    <img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Sign up" %}" /> <span>{% trans "Sign up" %}</span>
-                </a>
-            </div>
-            <div class="span6">
-                <div class="pull-right">
-                    <a href="http://twitter.com/vinny_says" class="btn btn-twitter" type="button">
-                        <img src="{% static "site/img/button_twitter.png" %}" alt="" /> <span>{% trans "Follow Us" %}</span>
+                {% block content_not_landing %}{# not for landing page #}
+                <div class="content-social pull-right">
+                    <a href="https://twitter.com/vinny_says" class="btn btn-twitter" type="button">
+                        <img src="{% static "site/img/button_twitter.png" %}" alt="{% trans "Twitter" %}" /> <span>{% trans "Follow Us" %}</span>
                     </a>
-                    <a href="http://www.facebook.com/vinnyapp" class="btn btn-facebook margin-right" type="button">
-                        <img src="{% static "site/img/button_facebook.png" %}" alt="" /> <span>{% trans "Like Us" %}</span>
+                    <a href="http://www.facebook.com/vinnyapp" class="btn btn-facebook margin" type="button">
+                        <img src="{% static "site/img/button_facebook.png" %}" alt="{% trans "Facebook" %}" /> <span>{% trans "Like Us" %}</span>
                     </a>
                 </div>
+                {% endblock %}
             </div>
         </div>
-        {% endblock %}
+
+        {% block content_landing %}{# for landing page only #}{% endblock %}
 
         <hr class="sep-extra-width" />
 

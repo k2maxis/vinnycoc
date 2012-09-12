@@ -1,12 +1,13 @@
 {% extends "staticpage.html" %}
 
 {% load i18n static %}
+{% load url from future %}
 
 {% block content_title %}
     {% trans "WELCOME TO VINNY" %}
 {% endblock %}
 
-{% block header_nav %}{% endblock %}
+{% block content_nav %}{% endblock %}{# not show in landing page #}
 
 {% block content_body %}
     {% blocktrans %}
@@ -23,6 +24,62 @@
     <a href='#'><img src="{% static "site/img/button_google_play.png" %}" alt="Google Play" /></a>
     <div class="pull-right">
         <a href="#youtube-modal" data-toggle="modal"><img src="{% static "site/img/button_watch_video.png" %}" alt="Watch Video" /></a>
+    </div>
+{% endblock %}
+
+{% block content_not_landing %}{% endblock %}
+
+{% block content_landing %}
+    <hr class="sep-double sep-dash sep-extra-width" />
+    
+    <div class="row">
+        <div class="span2">
+            <p class="content-auth-title margin-left">{% trans "Facebook Connect" %}</p>
+            <p class="content-auth-body margin-left">{% trans "Like us on Facebook and get a free car history report" %}</p>
+        </div>
+        <div class="span2">
+            <p class="content-auth-title margin-left">{% trans "Already a member?" %}</p>
+        </div>
+        <div class="span2">
+            <p class="content-auth-title margin-left">{% trans "Not a member yet?" %}</p>
+        </div>
+    </div>
+    
+    <div class="row content-buttons">
+        <div class="span2">
+            {% comment %}
+            <form class="connect-button" name="login" method="post" action="{% url "socialregistration:facebook:redirect" %}">{% csrf_token %}
+                <button onclick="this.form.submit();" class="btn btn-connect margin-left" type="button">
+                    <img src="{% static "site/img/button_facebook.png" %}" alt="" /> <span>{% trans "Connect" %}</span>
+                </button>
+            </form>
+            {% endcomment %}
+            <button class="btn btn-facebook margin-left" type="button" id="facebook-connect" data-url="{% url "ajax_fb_connect" %}">
+                <img src="{% static "site/img/button_facebook.png" %}" alt="" /> <span>{% trans "Connect" %}</span>
+            </button>
+            <div class="content-avatar"></div>
+        </div>
+        <div class="span2">
+            {#<a href="{% url "auth_login" %}" class="btn btn-inverse margin-left" type="button"><img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Log in" %}" /> <span>{% trans "Log in" %}</span></a>#}
+            <a class="btn btn-inverse margin-left login-ajax" type="button" data-url="{% url "ajax_login" %}">
+                <img src="{% static "site/img/lock_light.png" %}" alt="" /> <span>{% trans "Log in" %}</span>
+            </a>
+        </div>
+        <div class="span2">
+            <a href="{% url "registration_register" %}" class="btn btn-warning margin-left" type="button">
+                <img src="{% static "site/img/lock_light.png" %}" alt="{% trans "Sign up" %}" /> <span>{% trans "Sign up" %}</span>
+            </a>
+        </div>
+        <div class="span6">
+            <div class="pull-right">
+                <a href="http://twitter.com/vinny_says" class="btn btn-twitter" type="button">
+                    <img src="{% static "site/img/button_twitter.png" %}" alt="" /> <span>{% trans "Follow Us" %}</span>
+                </a>
+                <a href="http://www.facebook.com/vinnyapp" class="btn btn-facebook margin" type="button">
+                    <img src="{% static "site/img/button_facebook.png" %}" alt="" /> <span>{% trans "Like Us" %}</span>
+                </a>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
