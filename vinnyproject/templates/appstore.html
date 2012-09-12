@@ -1,0 +1,17 @@
+{% extends "staticpage.html" %}
+
+{% load i18n %}
+
+{% block head_title %}App Store{% endblock %}
+
+{% block content_title %}
+    {% trans "APP STORE" %}
+{% endblock %}
+
+{% block content_nav %}{% endblock %}
+
+{% block content_body %}
+    {% blocktrans %}
+    <p>The app is in beta, contact us if you would like to participate in our beta program.</p>
+    {% endblocktrans %}
+{% endblock %}

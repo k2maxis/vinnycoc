@@ -20,8 +20,8 @@
 {% endblock %}
 
 {% block content_link %}
-    <a href='#'><img src="{% static "site/img/button_app_store.png" %}" alt="App Store" /></a>
-    <a href='#'><img src="{% static "site/img/button_google_play.png" %}" alt="Google Play" /></a>
+    <a href='{% url "appstore" %}'><img src="{% static "site/img/button_app_store.png" %}" alt="App Store" /></a>
+    <a href='{% url "googleplay" %}'><img src="{% static "site/img/button_google_play.png" %}" alt="Google Play" /></a>
     <div class="pull-right">
         <a href="#youtube-modal" data-toggle="modal"><img src="{% static "site/img/button_watch_video.png" %}" alt="Watch Video" /></a>
     </div>
